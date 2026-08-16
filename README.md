@@ -111,7 +111,10 @@ End-to-end verified on the DSH web profile:
 - after the first durable `tool/call`, the full tool catalog is restored;
 - a spawned subagent (`delegationDepth: 1`) also starts with the Minimal
   persona, its first reasoning begins with `We need...`, and its first tool
-  call is `bash` only.
+  call is `bash` only;
+- when a subagent tool is configured with a fixed `persona`, that persona is
+  stripped for the first request and re-appears in the system prompt after the
+  child promotes.
 
 ## Development
 

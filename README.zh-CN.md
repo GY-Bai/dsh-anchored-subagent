@@ -96,7 +96,8 @@ preset 定义在 `agent-presets/dsh-anchored-subagent/agent.cordis.yml`。你也
 
 - 主 agent 以 Minimal persona + `bash + str_replace_editor` 开局；
 - 首次持久 `tool/call` 后恢复完整工具目录；
-- spawn 出的子代理（`delegationDepth: 1`）同样以 Minimal persona 开局，首段推理以 `We need...` 开头，首轮只调用 `bash`。
+- spawn 出的子代理（`delegationDepth: 1`）同样以 Minimal persona 开局，首段推理以 `We need...` 开头，首轮只调用 `bash`；
+- 当 subagent 工具配置了固定 `persona` 时，该 persona 会在首轮被剥离，并在子代理晋升后重新出现在 system prompt 中。
 
 ## 开发
 
