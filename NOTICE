@@ -15,5 +15,9 @@ This project contains code and design patterns adapted from:
   https://github.com/deepseek-ai/deepseek-harness
   Licensed under the MIT License.
 
+- liceses/dsh-gitbash-preset (installer pattern)
+  https://github.com/liceses/dsh-gitbash-preset
+  Licensed under the MIT License.
+
 The `str_replace_editor` tool schema and the DSH Minimal persona originate from
 DeepSeek Harness. See upstream project notices for details.

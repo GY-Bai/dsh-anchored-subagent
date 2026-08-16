@@ -1,0 +1,39 @@
+# dsh-anchored-subagent agent preset
+#
+# Anchors the session (main agent and any subagents that inherit this preset)
+# on the DSH Minimal condition for the first request, then promotes to the
+# full tool catalog after the first durable tool/call or assistant/message.
+#
+# The persona row is the authoritative complete system prompt. This is the
+# DSH-native way to override the deployment persona; a root-bundle hook cannot
+# do this reliably because complete sections are restored after the
+# system-prompt/assemble waterfall.
+
+# ── identity ────────────────────────────────────────────────────────────────
+
+# Keep this text byte-identical to the DSH Minimal preset. `complete` makes it
+# the sole system prompt; `includeRuntimeContext: false` keeps AGENTS.md /
+# skill-catalog style runtime snapshots out of the first request.
+- id: persona
+  name: '@deepseek-ai/dsh-persona'
+  config:
+    text: You are a helpful software engineer assistant.
+    complete: true
+    includeRuntimeContext: false
+
+# ── bootstrap ───────────────────────────────────────────────────────────────
+
+# First request: bash + str_replace_editor, no auto-injected context, optional
+# output cap. After the first durable signal, the full assembled tool catalog
+# is restored.
+- id: tool-bootstrap
+  name: ./tool-bootstrap.mjs
+  config:
+    bootstrapTools:
+      - bash
+      - str_replace_editor
+    promoteOn: either
+    suppressedContextSources:
+      - agent-instructions
+      - skill-catalog
+    bootstrapMaxTokens: null

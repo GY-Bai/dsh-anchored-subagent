@@ -1,11 +1,19 @@
 {
   "name": "dsh-anchored-subagent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Say the secret handshake: DSH subagents start on the Minimal two-tool condition to unlock DeepSeek's full RL-trained strength, then get the whole toolbox.",
   "type": "module",
-  "main": "./src/index.mjs",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
   "files": [
-    "src",
+    "lib",
+    "agent-presets",
     "cordis.patch.yml",
     "README.md",
     "README.zh-CN.md",
@@ -13,18 +21,21 @@
     "NOTICE"
   ],
   "scripts": {
+    "check": "node --check lib/index.js && node --check agent-presets/dsh-anchored-subagent/tool-bootstrap.mjs",
     "test": "node --test"
   },
   "keywords": [
     "dsh",
     "deepseek-harness",
     "dsh-plugin",
+    "agent-preset",
     "subagent",
     "minimal",
     "anchored",
     "trajectory"
   ],
   "license": "MIT",
+  "author": "baigengyuan",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
