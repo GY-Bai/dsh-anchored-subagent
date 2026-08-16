@@ -1,0 +1,27 @@
+# dsh-anchored-subagent bundle patch
+#
+# Installs one global plugin row that hooks DSH's agent lifecycle. The plugin
+# only changes behavior for SUBAGENTS (delegationDepth > 0): the first model
+# request is anchored on the DSH Minimal condition (bash + str_replace_editor
+# + Minimal persona + no auto-injected context), then the full tool catalog is
+# restored after the first durable tool/call or assistant/message.
+#
+# Install with:
+#
+#   dsh plugin add github:GY-Bai/dsh-anchored-subagent
+#
+- insert:
+    - id: dsh-anchored-subagent
+      name: 'dsh-anchored-subagent'
+      config:
+        bootstrapTools:
+          - bash
+          - str_replace_editor
+        promoteOn: either
+        suppressedContextSources:
+          - agent-instructions
+          - skill-catalog
+        bootstrapMaxTokens: null
+        bootstrapPersona: You are a helpful software engineer assistant.
+        preserveCustomPrompt: true
+        personaMode: session

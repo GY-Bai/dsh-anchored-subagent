@@ -1,0 +1,33 @@
+{
+  "name": "dsh-anchored-subagent",
+  "version": "0.1.0",
+  "description": "DSH plugin: subagents start on the Minimal two-tool condition (bash + str_replace_editor), then promote to the full tool catalog after the first durable signal.",
+  "type": "module",
+  "main": "./src/index.mjs",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "subagent",
+    "minimal",
+    "anchored",
+    "trajectory"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

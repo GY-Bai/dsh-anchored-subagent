@@ -1,0 +1,19 @@
+dsh-anchored-subagent
+Copyright (c) 2026 GY-Bai
+
+This project contains code and design patterns adapted from:
+
+- xiaobright/dsh-anchored-standard
+  https://github.com/xiaobright/dsh-anchored-standard
+  Licensed under the MIT License.
+
+- GY-Bai/pi-dsv4-booster
+  https://github.com/GY-Bai/pi-dsv4-booster
+  Licensed under the MIT License.
+
+- DeepSeek Harness (DeepSeek AI)
+  https://github.com/deepseek-ai/deepseek-harness
+  Licensed under the MIT License.
+
+The `str_replace_editor` tool schema and the DSH Minimal persona originate from
+DeepSeek Harness. See upstream project notices for details.
