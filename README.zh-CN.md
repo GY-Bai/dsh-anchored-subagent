@@ -1,12 +1,16 @@
 # dsh-anchored-subagent
 
-> **让 DSH 子代理先以 Minimal 条件开头，再晋升到完整工具目录。**
+> **给 DS 模型对上暗号。** 每个 DSH 子代理先用 Minimal 开局，诱出 RL 训练出的满血实力，再解锁完整工具库。
 
 [English](./README.md) | **中文**
 
 这是一个 DeepSeek Harness (DSH) 插件：让**子代理**像官方 **Minimal** preset 一样开局——
 只有两个工具（`bash` + `str_replace_editor`）、一句话 Minimal persona、不注入
 AGENTS.md/技能目录；在子代理首次持久 `tool/call` 或 `assistant/message` 后恢复完整工具目录。
+
+你可以把它理解成一种**暗号 / secret handshake**：子代理首轮请求使用 DeepSeek 在
+RL 训练时见过的 Minimal 条件，让模型一开局就进入最强的 `We need...` 轨迹；
+之后我们再把完整工具库交给它。
 
 它是 [`pi-dsv4-booster`](https://github.com/GY-Bai/pi-dsv4-booster) 的 DSH 版本，
 基于 DSH 原生 subagent 能力实现。

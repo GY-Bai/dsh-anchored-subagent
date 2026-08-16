@@ -1,7 +1,7 @@
 {
   "name": "dsh-anchored-subagent",
   "version": "0.1.0",
-  "description": "DSH plugin: subagents start on the Minimal two-tool condition (bash + str_replace_editor), then promote to the full tool catalog after the first durable signal.",
+  "description": "Say the secret handshake: DSH subagents start on the Minimal two-tool condition to unlock DeepSeek's full RL-trained strength, then get the whole toolbox.",
   "type": "module",
   "main": "./src/index.mjs",
   "files": [

@@ -1,7 +1,7 @@
 # dsh-anchored-subagent
 
-> **Anchors DSH subagents on the Minimal condition first, then promotes them to
-> the full tool catalog.**
+> **Say the secret handshake first.** Every DSH subagent starts in Minimal mode
+> to coax out DeepSeek's full RL-trained strength, then gets the whole toolbox.
 
 🌐 **English** | [中文](./README.zh-CN.md)
 
@@ -10,6 +10,10 @@ A DeepSeek Harness (DSH) plugin that makes **subagents** start like the official
 Minimal persona, and no auto-injected workspace/skill context — then restores
 the full tool catalog after the subagent's first durable `tool/call` or
 `assistant/message`.
+
+Think of it as an **暗号 / secret handshake**: the subagent's first request uses
+the exact Minimal condition DeepSeek was RL-trained on, so the model starts in
+its strongest `We need...` trajectory — then we hand it the full tool catalog.
 
 This is the DSH companion to [`pi-dsv4-booster`](https://github.com/GY-Bai/pi-dsv4-booster),
 ported to DSH's native subagent seam.
