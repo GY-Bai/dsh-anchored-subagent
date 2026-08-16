@@ -1,5 +1,9 @@
 # dsh-anchored-subagent
 
+<p align="center">
+  <img src="docs/social-preview.jpg" alt="dsh-anchored-subagent banner" width="100%">
+</p>
+
 > **给 DS 模型对上暗号。** 这个 DSH 插件会安装一个 agent preset，让每个会话（主 agent **和** 子代理）先以 Minimal 开局，再解锁完整工具库。
 
 [English](./README.md) | **中文**

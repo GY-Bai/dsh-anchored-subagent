@@ -1,5 +1,9 @@
 # dsh-anchored-subagent
 
+<p align="center">
+  <img src="docs/social-preview.jpg" alt="dsh-anchored-subagent banner" width="100%">
+</p>
+
 > **Say the secret handshake first.** This DSH plugin installs an agent preset
 > that starts every session (main agent **and** subagents) on the Minimal
 > condition, then unlocks the full tool catalog.
