@@ -94,6 +94,35 @@ function isPromoted(agent, promoteOn) {
   return events.some((event) => types.includes(event?.type))
 }
 
+/** Child session ids whose stripped persona has already been restored. */
+const restoredPersonas = new Set()
+
+/**
+ * After a subagent promotes, re-register the persona that was stripped by the
+ * host plugin at spawn time. This runs in the agent-plane preset scope and
+ * uses the child's own `agent.ctx`, so the restored persona shadows the
+ * preset's Minimal persona from the next request onward.
+ */
+function restoreChildPersona(agent, warnOnce) {
+  if (!agent?.session?.header?.delegationDepth) return
+  const sessionId = agent.session.id
+  if (!sessionId || restoredPersonas.has(sessionId)) return
+  const store = globalThis.__dshAnchoredSubagentPersonas
+  if (!store) return
+  const persona = store.get(String(sessionId))
+  if (persona === undefined) return
+  try {
+    agent.ctx?.systemPrompt?.section({
+      name: 'deployment:persona',
+      order: 0,
+      text: persona,
+    })
+    restoredPersonas.add(sessionId)
+  } catch (error) {
+    warnOnce(`failed to restore subagent persona: ${String((error && error.message) || error)}`)
+  }
+}
+
 export function apply(ctx, sourceConfig) {
   const config = parseConfig(sourceConfig)
   let warned = false
@@ -113,7 +142,10 @@ export function apply(ctx, sourceConfig) {
     const assembled = await next()
     const agent = context?.agent
     try {
-      if (isPromoted(agent, config.promoteOn)) return assembled
+      if (isPromoted(agent, config.promoteOn)) {
+        restoreChildPersona(agent, warnOnce)
+        return assembled
+      }
       const available = new Set(assembled.tools.map((tool) => tool?.name))
       const missing = config.bootstrapTools.filter((toolName) => !available.has(toolName))
       if (missing.length > 0) {

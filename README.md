@@ -47,6 +47,14 @@ first model request (main agent or subagent)
 Subagents inherit the preset automatically because DSH composes child agents
 from the parent's agent preset.
 
+### Any subagent persona is stripped first, restored after promotion
+
+If a subagent is spawned with a custom `persona`, this plugin strips it before
+the child is created. The child therefore starts with the **pure Minimal
+persona** on request #1. After the child's first durable `tool/call` or
+`assistant/message`, the original persona is re-registered in the child scope,
+so the role comes back for subsequent turns.
+
 ## Installation
 
 ```sh

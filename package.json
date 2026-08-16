@@ -1,6 +1,6 @@
 {
   "name": "dsh-anchored-subagent",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Say the secret handshake: DSH subagents start on the Minimal two-tool condition to unlock DeepSeek's full RL-trained strength, then get the whole toolbox.",
   "type": "module",
   "main": "lib/index.js",

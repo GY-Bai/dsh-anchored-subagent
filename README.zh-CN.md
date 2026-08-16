@@ -41,6 +41,10 @@ DSH 的子代理会自动 **join 父会话的 agent preset composition**。所�
 
 子代理自动继承 preset，因为 DSH 会用父 agent 的 preset composition 来组合子代理。
 
+### 任何子代理 persona 都会先被剥离，晋升后再恢复
+
+如果子代理 spawn 时带了自定义 `persona`，本插件会在创建前把它剥离。因此子代理首轮使用**纯 Minimal persona**；在子代理首次持久 `tool/call` 或 `assistant/message` 后，原始 persona 会被重新注册回子代理作用域，角色从后续轮次恢复。
+
 ## 安装
 
 ```sh
