@@ -82,6 +82,14 @@ preset 定义在 `agent-presets/dsh-anchored-subagent/agent.cordis.yml`。你也
     bootstrapMaxTokens: null
 ```
 
+## 已验证
+
+已在 DSH web profile 上完成端到端验证：
+
+- 主 agent 以 Minimal persona + `bash + str_replace_editor` 开局；
+- 首次持久 `tool/call` 后恢复完整工具目录；
+- spawn 出的子代理（`delegationDepth: 1`）同样以 Minimal persona 开局，首段推理以 `We need...` 开头，首轮只调用 `bash`。
+
 ## 开发
 
 ```sh

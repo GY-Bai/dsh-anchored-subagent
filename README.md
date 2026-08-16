@@ -91,6 +91,16 @@ Example `agent.cordis.yml`:
     bootstrapMaxTokens: null
 ```
 
+## Verified
+
+End-to-end verified on the DSH web profile:
+
+- main agent starts with the Minimal persona and `bash + str_replace_editor`;
+- after the first durable `tool/call`, the full tool catalog is restored;
+- a spawned subagent (`delegationDepth: 1`) also starts with the Minimal
+  persona, its first reasoning begins with `We need...`, and its first tool
+  call is `bash` only.
+
 ## Development
 
 ```sh
